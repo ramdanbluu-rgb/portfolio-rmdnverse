@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html class="dark scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DEV/CORE | Web &amp; Backend Engineer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#3a3939",
+                        "inverse-primary": "#5d5f5f",
+                        "surface-tint": "#c6c6c7",
+                        "error-container": "#93000a",
+                        "tertiary-fixed": "#eae0dd",
+                        "tertiary-container": "#eae0dd",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-container": "#201f1f",
+                        "primary-fixed": "#e2e2e2",
+                        "on-background": "#e5e2e1",
+                        "on-primary-fixed": "#1a1c1c",
+                        "surface-container-low": "#1c1b1b",
+                        "on-tertiary-fixed-variant": "#4b4644",
+                        "tertiary": "#ffffff",
+                        "primary": "#ffffff",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "background": "#141313",
+                        "tertiary-fixed-dim": "#cec5c2",
+                        "surface-dim": "#141313",
+                        "outline": "#8e9192",
+                        "surface": "#141313",
+                        "primary-container": "#e2e2e2",
+                        "surface-container-highest": "#353434",
+                        "surface-variant": "#353434",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed-variant": "#454747",
+                        "on-secondary-fixed-variant": "#464747",
+                        "outline-variant": "#444748",
+                        "secondary-fixed": "#e3e2e2",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "inverse-surface": "#e5e2e1",
+                        "on-secondary-container": "#b5b5b5",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "on-tertiary-container": "#6a6361",
+                        "secondary": "#c7c6c6",
+                        "surface-container-high": "#2a2a2a",
+                        "on-surface-variant": "#c4c7c8",
+                        "secondary-container": "#464747",
+                        "on-primary": "#2f3131",
+                        "inverse-on-surface": "#313030",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary": "#342f2e",
+                        "on-primary-container": "#636565",
+                        "on-tertiary-fixed": "#1f1b19",
+                        "on-secondary": "#303031",
+                        "on-surface": "#e5e2e1",
+                        "on-error": "#690005"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "stack-lg": "64px",
+                        "stack-sm": "8px",
+                        "unit": "4px",
+                        "stack-md": "24px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Geist"],
+                        "headline-lg-mobile": ["Geist"],
+                        "label-mono": ["JetBrains Mono"],
+                        "body-md": ["Geist"],
+                        "caption": ["Geist"],
+                        "display": ["Geist"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "500" }],
+                        "label-mono": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "caption": ["14px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "display": ["72px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #050505;
+            color: #e5e2e1;
+            overflow-x: hidden;
+        }
+
+        /* 1px grid lines & void styling */
+        .border-void { border-color: #222222; }
+        .bg-surface-void { background-color: #111111; }
+        .bg-background-void { background-color: #050505; }
+        
+        /* Typography overriding defaults */
+        h1, h2, h3, h4, h5, h6 { font-family: 'Geist', sans-serif; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        /* Animation Setup */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Stagger text reveals */
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        
+        .bento-card {
+            transition: all 0.3s ease;
+        }
+        .bento-card:hover {
+            border-color: #e2e2e2;
+            background-color: #1a1a1a;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen relative font-body-md text-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Fixed Background Animation -->
+<div class="fixed inset-0 z-[-1] pointer-events-none opacity-40">
+<!-- STITCH_SHADER_START:ANIMATION_2 class="absolute inset-0 w-full h-full" -->
+<div class="absolute inset-0 w-full h-full" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_2" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_2');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+uniform float u_time;
+uniform vec2 u_resolution;
+
+float random(vec2 st) {
+    return fract(sin(dot(st.xy, vec2(12.9898,78.233))) * 43758.5453123);
+}
+
+void main() {
+    vec2 st = gl_FragCoord.xy / u_resolution.xy;
+    
+    // Very subtle noise for that premium "matte" look
+    float grain = random(st + u_time * 0.01);
+    
+    // Base void black color
+    vec3 color = vec3(0.019, 0.019, 0.019); // #050505 approx
+    
+    // Add grain texture
+    color += (grain - 0.5) * 0.02;
+    
+    gl_FragColor = vec4(color, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_2 -->
+<!-- Overlay to ensure text readability -->
+<div class="absolute inset-0 bg-gradient-to-b from-[#050505]/80 via-[#050505]/95 to-[#050505]"></div>
+</div>
+<!-- TopNavBar Component -->
+<nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-outline-variant flat no shadows font-body-md text-body-md uppercase tracking-widest">
+<div class="flex justify-between items-center h-16 px-gutter max-w-container-max mx-auto">
+<a class="font-label-mono text-label-mono text-primary font-bold cursor-pointer active:scale-95 transition-transform hover:text-primary transition-colors duration-300" href="#">
+                DEV/CORE
+            </a>
+<div class="hidden md:flex space-x-8">
+<a class="text-on-surface-variant font-normal hover:text-primary transition-colors duration-300 cursor-pointer active:scale-95 transition-transform" href="#work">Work</a>
+<a class="text-on-surface-variant font-normal hover:text-primary transition-colors duration-300 cursor-pointer active:scale-95 transition-transform" href="#stack">Stack</a>
+<a class="text-on-surface-variant font-normal hover:text-primary transition-colors duration-300 cursor-pointer active:scale-95 transition-transform" href="#contact">Contact</a>
+</div>
+<button class="bg-[#EDEDED] text-[#050505] rounded-DEFAULT px-4 py-2 font-label-mono text-label-mono hover:bg-[#c6c6c7] transition-colors">
+                Resume
+            </button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-32 pb-stack-lg max-w-container-max mx-auto px-gutter md:px-margin-mobile lg:px-gutter">
+<!-- Hero Section -->
+<section class="min-h-[70vh] flex flex-col justify-center items-start pt-20">
+<div class="mono text-outline mb-stack-sm text-label-mono uppercase tracking-widest reveal-up stagger-1">System Initialize / User_01</div>
+<h1 class="font-display text-display text-primary leading-tight max-w-4xl reveal-up stagger-2 mb-6">
+                Web &amp; Backend Engineer.
+            </h1>
+<p class="text-on-surface-variant max-w-2xl text-xl leading-relaxed reveal-up stagger-3 mb-stack-md">
+                Architecting robust, scalable systems and constructing precise, high-performance interfaces. Based in the digital void.
+            </p>
+<div class="reveal-up stagger-3 flex gap-4">
+<a class="bg-[#EDEDED] text-[#050505] rounded-DEFAULT px-6 py-3 font-label-mono text-label-mono hover:bg-[#c6c6c7] transition-colors inline-block" href="#work">
+                    View Works
+                </a>
+<a class="bg-transparent border border-void text-[#EDEDED] rounded-DEFAULT px-6 py-3 font-label-mono text-label-mono hover:bg-surface-void transition-colors inline-block" href="#contact">
+                    Contact Node
+                </a>
+</div>
+</section>
+<!-- Expertise / Tech Stack Bento Grid -->
+<section class="py-stack-lg border-t border-void mt-stack-lg reveal-up" id="stack">
+<div class="flex items-center gap-4 mb-12">
+<span class="mono text-primary text-label-mono border border-void px-2 py-1">01</span>
+<h2 class="font-headline-lg text-headline-lg md:text-headline-lg-mobile text-primary">Technical Expertise</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Bento Item 1 -->
+<div class="bento-card bg-surface-void border border-void p-8 rounded-DEFAULT md:col-span-2 relative overflow-hidden flex flex-col justify-end min-h-[250px]">
+<span class="material-symbols-outlined text-outline absolute top-6 right-6 text-4xl" data-weight="fill" style="font-variation-settings: 'FILL' 1;">
+                        database
+                    </span>
+<h3 class="font-headline-lg text-headline-lg-mobile text-primary mb-2">API &amp; Database Architecture</h3>
+<p class="text-on-surface-variant font-caption text-caption mb-4">Designing scalable RESTful and GraphQL APIs with relational and NoSQL databases.</p>
+<div class="flex gap-2 flex-wrap">
+<span class="border border-void px-2 py-1 mono text-[10px] text-outline">PostgreSQL</span>
+<span class="border border-void px-2 py-1 mono text-[10px] text-outline">MongoDB</span>
+<span class="border border-void px-2 py-1 mono text-[10px] text-outline">Redis</span>
+</div>
+</div>
+<!-- Bento Item 2 -->
+<div class="bento-card bg-surface-void border border-void p-8 rounded-DEFAULT flex flex-col justify-end min-h-[250px] relative">
+<span class="material-symbols-outlined text-outline absolute top-6 right-6 text-4xl">
+                        code_blocks
+                    </span>
+<h3 class="font-headline-lg text-headline-lg-mobile text-primary mb-2">Backend Logic</h3>
+<p class="text-on-surface-variant font-caption text-caption mb-4">Robust server-side processing.</p>
+<div class="flex gap-2 flex-wrap">
+<span class="border border-void px-2 py-1 mono text-[10px] text-outline">Laravel</span>
+<span class="border border-void px-2 py-1 mono text-[10px] text-outline">Node.js</span>
+</div>
+</div>
+<!-- Bento Item 3 -->
+<div class="bento-card bg-surface-void border border-void p-8 rounded-DEFAULT flex flex-col justify-end min-h-[250px] relative">
+<span class="material-symbols-outlined text-outline absolute top-6 right-6 text-4xl">
+                        integration_instructions
+                    </span>
+<h3 class="font-headline-lg text-headline-lg-mobile text-primary mb-2">DevOps &amp; CI/CD</h3>
+<p class="text-on-surface-variant font-caption text-caption mb-4">Automating deployment pipelines.</p>
+<div class="flex gap-2 flex-wrap">
+<span class="border border-void px-2 py-1 mono text-[10px] text-outline">Docker</span>
+<span class="border border-void px-2 py-1 mono text-[10px] text-outline">GitHub Actions</span>
+</div>
+</div>
+<!-- Bento Item 4 -->
+<div class="bento-card bg-surface-void border border-void p-8 rounded-DEFAULT md:col-span-2 relative overflow-hidden flex flex-col justify-end min-h-[250px]">
+<span class="material-symbols-outlined text-outline absolute top-6 right-6 text-4xl">
+                        web
+                    </span>
+<h3 class="font-headline-lg text-headline-lg-mobile text-primary mb-2">Frontend Interfaces</h3>
+<p class="text-on-surface-variant font-caption text-caption mb-4">Building responsive, accessible, and performant user interfaces.</p>
+<div class="flex gap-2 flex-wrap">
+<span class="border border-void px-2 py-1 mono text-[10px] text-outline">React</span>
+<span class="border border-void px-2 py-1 mono text-[10px] text-outline">Tailwind CSS</span>
+<span class="border border-void px-2 py-1 mono text-[10px] text-outline">TypeScript</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Selected Works -->
+<section class="py-stack-lg border-t border-void mt-stack-lg reveal-up" id="work">
+<div class="flex items-center gap-4 mb-12">
+<span class="mono text-primary text-label-mono border border-void px-2 py-1">02</span>
+<h2 class="font-headline-lg text-headline-lg md:text-headline-lg-mobile text-primary">Selected Works</h2>
+</div>
+<div class="flex flex-col gap-24">
+<!-- Project 1 -->
+<article class="project-card group relative">
+<div class="w-full h-[60vh] bg-surface-void border border-void mb-6 overflow-hidden relative">
+<div class="bg-cover bg-center w-full h-full opacity-60 group-hover:opacity-100 transition-opacity duration-500" data-alt="A sleek, dark-themed dashboard interface displaying complex data visualizations and analytics. The aesthetic is brutalist minimal, with a deep black background, sharp 1px borders, and striking neon blue data points. The UI looks highly technical and professional, resembling advanced financial software." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDUpARVgi9tsFg9Wc56hGb4bHSBwph1MojBjQQGIwnG_2g1Tj5qtudLa0Q0gub3ar8LJbPLpn98zFyMntBllw6Jh3t9ELet0Cc8C36DUe3-c2KCjdlHgsNAh82S_wmtx7RZLy-FvcK5OW3-YySqLXtiGglacqK7kRAV1j6QM7MFlasvCkn_qbQp-048b6ruKTs9n2j79n2pl6yKTsMqNXevTUqTRzJZaTrpWmAQQPv-MjmnGcS5')"></div>
+<div class="absolute inset-0 border border-transparent group-hover:border-primary transition-colors duration-500 pointer-events-none"></div>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div>
+<h3 class="font-headline-lg text-headline-lg-mobile text-primary">FinTech Analytics Platform</h3>
+<p class="text-on-surface-variant font-caption text-caption max-w-lg mt-2">Real-time data processing engine with low-latency API and dashboard.</p>
+</div>
+<a class="mono text-label-mono border-b border-void pb-1 hover:border-primary transition-colors text-primary uppercase" href="#">View Case Study -&gt;</a>
+</div>
+</article>
+<!-- Project 2 -->
+<article class="project-card group relative">
+<div class="w-full h-[60vh] bg-surface-void border border-void mb-6 overflow-hidden relative">
+<div class="bg-cover bg-center w-full h-full opacity-60 group-hover:opacity-100 transition-opacity duration-500" data-alt="A highly structured e-commerce backend management screen. The design is stark and minimal, utilizing a dark mode palette with stark white typography and subtle gray structural lines. It shows inventory tables and order processing logs, emphasizing technical precision and utility over decoration." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD82poDBnTEwHN61pn_EKpSA_u9MC3MzKGlbvcfaKL_o0z-gatgkUXsA7aU8IXOxwDZ_1S3ye0Z6se2OGK_S-t61O6KwTPYmp9YT72FAVNtnZeuEuil6HkjMwVgeTJl6hYMlNnlre1tz0nrDxAAMB6JWVXPofMRFwpiaV9k4dGOgSa7P1Am3qZVNRq_n9gNOQH9fGIfRvCkkIOmJwgjvuL0bYKAEC98JGNiB6WOXbr6S6Nr6xi_')"></div>
+<div class="absolute inset-0 border border-transparent group-hover:border-primary transition-colors duration-500 pointer-events-none"></div>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div>
+<h3 class="font-headline-lg text-headline-lg-mobile text-primary">Global Logistics API</h3>
+<p class="text-on-surface-variant font-caption text-caption max-w-lg mt-2">Scalable microservices architecture for supply chain tracking.</p>
+</div>
+<a class="mono text-label-mono border-b border-void pb-1 hover:border-primary transition-colors text-primary uppercase" href="#">View Case Study -&gt;</a>
+</div>
+</article>
+</div>
+</section>
+</main>
+<!-- Footer Component -->
+<footer class="w-full py-stack-lg bg-background border-t border-outline-variant flat no shadows transition-all duration-500 ease-in-out" id="contact">
+<div class="flex flex-col items-start px-gutter max-w-container-max mx-auto reveal-up">
+<h2 class="font-display text-display text-primary mb-12">Let's build.</h2>
+<div class="w-full grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-void pt-12">
+<div>
+<p class="text-on-surface-variant font-caption text-caption mb-4">Connect on the network.</p>
+<div class="flex gap-6 font-headline-lg text-headline-lg-mobile text-on-surface-variant">
+<a class="hover:text-primary transition-all underline" href="#">Github</a>
+<a class="hover:text-primary transition-all underline" href="#">LinkedIn</a>
+<a class="hover:text-primary transition-all underline" href="#">Twitter</a>
+</div>
+</div>
+<div class="md:text-right flex flex-col justify-end h-full">
+<p class="text-on-surface-variant font-label-mono text-label-mono mono uppercase tracking-widest">
+                        © 2024 DEV/CORE. ALL RIGHTS RESERVED.
+                    </p>
+</div>
+</div>
+</div>
+</footer>
+<!-- Intersection Observer for Scroll Animations -->
+<script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Run once
+                    }
+                });
+            }, observerOptions);
+
+            const revealElements = document.querySelectorAll('.reveal-up');
+            revealElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body></html>
