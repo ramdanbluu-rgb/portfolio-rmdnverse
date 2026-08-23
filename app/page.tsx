@@ -6,6 +6,7 @@ import SiteNav from "@/components/site-nav";
 import Terminal from "@/components/terminal";
 import AiCore from "@/components/ai-core";
 import Reveal from "@/components/reveal";
+import Copyright from "@/components/copyright";
 import { TechMarquee, EXPERTISE, AI_FEATURES } from "@/components/shared";
 import Link from "next/link";
 import { projects } from "@/data/projects";
@@ -348,9 +349,7 @@ export default function Home() {
               </div>
             </Reveal>
             <Reveal delay={0.1} className="md:text-right">
-              <p className="font-mono text-label-mono uppercase tracking-widest text-outline">
-                © 2024 {site.name}. ALL RIGHTS RESERVED.
-              </p>
+              <Copyright />
             </Reveal>
           </div>
         </div>
