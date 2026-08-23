@@ -7,6 +7,6 @@ export const site = {
   socials: [
     { label: "Github", href: "https://github.com/ramdanbluu-rgb" },
     { label: "LinkedIn", href: "https://linkedin.com/in/ramdanbluu-rgb" },
-    { label: "Instagram", href: "https://instagram.com/rmdnnn_11" },
+    { label: "Instagram", href: "https://instagram.com/r_mdnnn11" },
   ],
 };
