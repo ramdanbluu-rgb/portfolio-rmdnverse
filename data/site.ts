@@ -5,8 +5,8 @@ export const site = {
   resume: "/resume.pdf",
   // TODO: ganti dengan handle asli
   socials: [
-    { label: "Github", href: "https://github.com/your-username" },
-    { label: "LinkedIn", href: "https://linkedin.com/in/your-username" },
-    { label: "Twitter", href: "https://x.com/your-username" },
+    { label: "Github", href: "https://github.com/ramdanbluu-rgb" },
+    { label: "LinkedIn", href: "https://linkedin.com/in/ramdanbluu-rgb" },
+    { label: "Instagram", href: "https://instagram.com/rmdnnn_11" },
   ],
 };
