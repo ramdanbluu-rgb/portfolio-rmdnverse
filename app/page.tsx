@@ -1,36 +1,63 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles, Award, Briefcase, GraduationCap } from "lucide-react";
 import SiteNav from "@/components/site-nav";
 import Terminal from "@/components/terminal";
 import AiCore from "@/components/ai-core";
 import Reveal from "@/components/reveal";
 import Copyright from "@/components/copyright";
-import { TechMarquee, EXPERTISE, AI_FEATURES } from "@/components/shared";
+import { TechMarquee, EXPERTISE, AI_BADGE } from "@/components/shared";
 import Link from "next/link";
 import { projects } from "@/data/projects";
 import { site } from "@/data/site";
 
 const TECH = [
-  "TypeScript",
-  "Next.js",
+  "PHP",
+  "MySQL",
+  "JavaScript",
   "Node.js",
-  "Laravel",
-  "PostgreSQL",
-  "Redis",
-  "Docker",
-  "GraphQL",
-  "OpenAI",
-  "LangChain",
-  "GitHub Actions",
+  "Next.js",
   "React",
+  "TypeScript",
+  "Telegram Bot API",
+  "Google Sheets API",
+  "Google Cloud",
+  "Git",
+  "Vercel",
 ];
 
 const STATS = [
-  { value: "5+", label: "Years shipping" },
-  { value: "20+", label: "Systems deployed" },
-  { value: "99.9%", label: "Uptime maintained" },
+  { value: "3+", label: "Project Nyata" },
+  { value: "1x", label: "Guinness World Record" },
+  { value: "1x", label: "Juara Lomba Web Design" },
+];
+
+const EXPERIENCE = [
+  {
+    period: "2025",
+    role: "Praktek Kerja Lapangan (PKL)",
+    company: "Perusahaan ISP",
+    icon: Briefcase,
+    desc: "Membangun aplikasi pembukuan internal (PHP, MySQL, JavaScript) untuk menggantikan pencatatan manual. Belajar dasar jaringan: IP addressing, VLAN, monitoring bandwidth, dan troubleshooting koneksi pelanggan di lingkungan ISP nyata.",
+    tags: ["PHP", "MySQL", "JavaScript", "Jaringan", "ISP Operations"],
+  },
+  {
+    period: "2025",
+    role: "Peserta Guinness World Record",
+    company: "AWS IDN — Generative AI Creations",
+    icon: Award,
+    desc: "Mengikuti event pecah rekor dunia MURI/Guinness \"Most participants in a generative AI workshop\" diselenggarakan AWS User Group Indonesia. Mempelajari dasar LLM, prompt engineering, dan mencoba layanan AI AWS (Bedrock, PartyRock) secara hands-on.",
+    tags: ["Generative AI", "AWS Bedrock", "Prompt Engineering", "LLM"],
+  },
+  {
+    period: "2025",
+    role: "Juara 1 Lomba Web Design",
+    company: "Team A2F",
+    icon: GraduationCap,
+    desc: "Menjuarai lomba desain web tingkat regional/sekolah sebagai tim A2F. Bertanggung jawab pada pengembangan frontend, integrasi API, dan deployment. Mengasah kemampuan kerja tim, manajemen waktu, dan presentasi produk teknis.",
+    tags: ["HTML/CSS", "JavaScript", "Responsive Design", "Teamwork", "Deployment"],
+  },
 ];
 
 const container = {
@@ -68,7 +95,7 @@ export default function Home() {
               >
                 <Sparkles size={13} className="text-accent-red" />
                 <span className="font-mono text-label-mono uppercase tracking-widest text-on-surface-variant">
-                  Web · Backend · AI
+                  SMK · Web Developer
                 </span>
               </motion.div>
 
@@ -76,20 +103,20 @@ export default function Home() {
                 variants={item}
                 className="font-sans text-[clamp(40px,6vw,72px)] font-semibold leading-[1.05] tracking-tight text-primary"
               >
-                Building{" "}
+                Membangun{" "}
                 <span className="bg-gradient-to-r from-white via-white to-white/40 bg-clip-text text-transparent">
-                  intelligent systems
+                  solusi web yang bermakna
                 </span>{" "}
-                for the modern web.
+                dari project nyata.
               </motion.h1>
 
               <motion.p
                 variants={item}
                 className="mt-6 max-w-xl text-lg leading-relaxed text-on-surface-variant"
               >
-                I architect scalable backends, craft precise interfaces, and
-                wire AI into products that actually ship — from database
-                schema to deployment pipeline.
+                Siswa SMK Kelas 12 dengan pengalaman PKL di perusahaan ISP, membangun aplikasi pembukuan &
+                otomatisasi (GMQ Bot), serta juara lomba web design. Fokus pada pengembangan web fullstack,
+                integrasi API, dan belajar terus dari project nyata.
               </motion.p>
 
               <motion.div variants={item} className="mt-10 flex flex-wrap gap-4">
@@ -97,7 +124,7 @@ export default function Home() {
                   href="#work"
                   className="group inline-flex items-center gap-2 bg-primary text-[#050505] rounded-md px-6 py-3 font-mono text-label-mono uppercase tracking-widest hover:bg-on-surface transition-colors"
                 >
-                  View Works
+                  Lihat Project
                   <ArrowRight
                     size={14}
                     className="transition-transform group-hover:translate-x-1"
@@ -107,7 +134,7 @@ export default function Home() {
                   href={`mailto:${site.email}`}
                   className="inline-flex items-center gap-2 border border-void rounded-md px-6 py-3 font-mono text-label-mono uppercase tracking-widest text-[#e5e2e1] hover:bg-surface-void hover:border-outline-variant transition-colors"
                 >
-                  Contact Node
+                  Hubungi Saya
                 </a>
               </motion.div>
 
@@ -143,7 +170,7 @@ export default function Home() {
           <TechMarquee items={TECH} />
         </Reveal>
 
-        {/* ================= EXPERTISE ================= */}
+        {/* ================= KEahlian ================= */}
         <section id="stack" className="relative py-stack-lg">
           <div className="max-w-container-max mx-auto px-gutter">
             <Reveal>
@@ -152,7 +179,7 @@ export default function Home() {
                   01
                 </span>
                 <h2 className="text-headline-lg md:text-[28px] text-primary">
-                  Technical Expertise
+                  Keahlian
                 </h2>
               </div>
             </Reveal>
@@ -193,58 +220,66 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ================= AI ================= */}
-        <section id="ai" className="relative py-stack-lg border-t border-void">
-          <div className="max-w-container-max mx-auto px-gutter grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <Reveal>
-                <div className="flex items-center gap-4 mb-8">
-                  <span className="font-mono text-label-mono text-primary border border-void rounded px-2 py-1">
-                    02
-                  </span>
-                  <h2 className="text-headline-lg md:text-[28px] text-primary">
-                    AI-Native Engineering
-                  </h2>
-                </div>
-                <p className="text-lg leading-relaxed text-on-surface-variant max-w-xl">
-                  Not demos — production AI. Retrieval pipelines, agents and
-                  model integrations engineered with the same rigor as any
-                  other backend system: typed, tested, observable.
-                </p>
-              </Reveal>
+        {/* ================= PENGALAMAN ================= */}
+        <section id="pengalaman" className="relative py-stack-lg border-t border-void">
+          <div className="max-w-container-max mx-auto px-gutter">
+            <Reveal>
+              <div className="flex items-center gap-4 mb-12">
+                <span className="font-mono text-label-mono text-primary border border-void rounded px-2 py-1">
+                  02
+                </span>
+                <h2 className="text-headline-lg md:text-[28px] text-primary">
+                  Pengalaman
+                </h2>
+              </div>
+            </Reveal>
 
-              <div className="mt-10 space-y-6">
-                {AI_FEATURES.map((f, i) => (
-                  <Reveal key={f.title} delay={0.1 + i * 0.08}>
-                    <div className="flex gap-5 items-start">
-                      <div className="shrink-0 w-11 h-11 rounded-lg border border-void bg-surface-void flex items-center justify-center">
-                        <f.icon size={20} className="text-primary" strokeWidth={1.6} />
+            <div className="relative">
+              {/* vertical line */}
+              <div className="absolute left-6 top-0 bottom-0 w-px bg-void" aria-hidden="true" />
+              
+              <div className="space-y-12 pl-16">
+                {EXPERIENCE.map((exp, i) => (
+                  <Reveal key={exp.role} delay={i * 0.1}>
+                    <article className="relative group">
+                      {/* timeline dot */}
+                      <div className="absolute -left-16 top-2 w-10 h-10 rounded-full border-2 border-void bg-surface-void flex items-center justify-center transition-colors group-hover:border-primary group-hover:bg-primary/10">
+                        <exp.icon size={18} className="text-outline group-hover:text-primary transition-colors" strokeWidth={1.8} />
                       </div>
-                      <div>
-                        <h3 className="text-primary font-medium">{f.title}</h3>
-                        <p className="text-caption text-on-surface-variant mt-1">
-                          {f.desc}
-                        </p>
+                      
+                      {/* period badge */}
+                      <div className="absolute -left-72 top-2 w-60 text-right font-mono text-[11px] uppercase tracking-widest text-outline">
+                        {exp.period}
                       </div>
-                    </div>
+                      
+                      {/* card */}
+                      <div className="rounded-xl border border-void bg-surface-void p-6 hover:border-outline-variant transition-colors">
+                        <div className="flex items-baseline gap-3 mb-3">
+                          <span className="font-mono text-label-mono text-primary">{exp.period}</span>
+                          <span className="text-primary font-medium">{exp.role}</span>
+                        </div>
+                        <p className="text-lg text-primary font-medium mb-3">{exp.company}</p>
+                        <p className="text-on-surface-variant leading-relaxed mb-4">{exp.desc}</p>
+                        <div className="flex gap-2 flex-wrap">
+                          {exp.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="border border-void rounded px-2 py-1 font-mono text-[10px] uppercase tracking-wider text-outline"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </article>
                   </Reveal>
                 ))}
               </div>
             </div>
-
-            <Reveal delay={0.15}>
-              <div className="rounded-xl border border-void bg-surface-void/50 p-8">
-                <AiCore />
-                <div className="mt-6 flex justify-between font-mono text-[10px] uppercase tracking-widest text-outline">
-                  <span>neural_mesh :: active</span>
-                  <span className="text-emerald-400">8 nodes online</span>
-                </div>
-              </div>
-            </Reveal>
           </div>
         </section>
 
-        {/* ================= WORKS ================= */}
+        {/* ================= PROJECTS ================= */}
         <section id="work" className="relative py-stack-lg border-t border-void">
           <div className="max-w-container-max mx-auto px-gutter">
             <Reveal>
@@ -253,7 +288,7 @@ export default function Home() {
                   03
                 </span>
                 <h2 className="text-headline-lg md:text-[28px] text-primary">
-                  Selected Works
+                  Project
                 </h2>
               </div>
             </Reveal>
@@ -292,7 +327,7 @@ export default function Home() {
                         className="font-mono text-label-mono uppercase border-b border-void pb-1 hover:border-primary transition-colors text-primary"
                         href={`/work/${project.slug}`}
                       >
-                        View Case Study →
+                        Lihat Detail →
                       </Link>
                     </div>
                   </article>
@@ -308,15 +343,15 @@ export default function Home() {
         <div className="max-w-container-max mx-auto px-gutter py-stack-lg">
           <Reveal>
             <h2 className="text-[clamp(36px,5vw,64px)] font-semibold tracking-tight text-primary">
-              Let&apos;s build something{" "}
-              <span className="text-accent-red">unreasonable.</span>
+              Mari bangun sesuatu yang{" "}
+              <span className="text-accent-red">bermanfaat.</span>
             </h2>
             <div className="mt-10 flex flex-wrap gap-4">
               <a
                 className="inline-flex items-center gap-2 bg-primary text-[#050505] rounded-md px-6 py-3 font-mono text-label-mono uppercase tracking-widest hover:bg-on-surface transition-colors"
                 href={`mailto:${site.email}`}
               >
-                Start a Project
+                Mulai Project
               </a>
               <a
                 className="inline-flex items-center gap-2 border border-void rounded-md px-6 py-3 font-mono text-label-mono uppercase tracking-widest text-[#e5e2e1] hover:bg-surface-void transition-colors"
@@ -324,7 +359,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Download Resume
+                Unduh Resume
               </a>
             </div>
           </Reveal>
@@ -332,7 +367,7 @@ export default function Home() {
           <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-void pt-12">
             <Reveal>
               <p className="text-caption text-on-surface-variant mb-4">
-                Connect on the network.
+                Terhubung di jaringan.
               </p>
               <div className="flex gap-6 text-lg text-on-surface-variant">
                 {site.socials.map((social) => (

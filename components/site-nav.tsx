@@ -7,10 +7,10 @@ import { Menu, X, FileDown } from "lucide-react";
 import { site } from "@/data/site";
 
 const NAV_LINKS = [
-  { label: "Expertise", href: "/#stack" },
-  { label: "AI", href: "/#ai" },
-  { label: "Work", href: "/#work" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Keahlian", href: "/#stack" },
+  { label: "Pengalaman", href: "/#pengalaman" },
+  { label: "Project", href: "/#work" },
+  { label: "Kontak", href: "/#contact" },
 ];
 
 export default function SiteNav() {

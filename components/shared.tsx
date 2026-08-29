@@ -1,11 +1,10 @@
 import {
-  Sparkles,
-  BrainCircuit,
-  Zap,
-  ShieldCheck,
-  Database,
+  Users,
   Code2,
-  ServerCog,
+  Zap,
+  Wifi,
+  Bot,
+  LayoutDashboard,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -24,26 +23,6 @@ export const TechMarquee = ({ items }: { items: string[] }) => (
   </div>
 );
 
-type Feature = { icon: LucideIcon; title: string; desc: string };
-
-export const AI_FEATURES: Feature[] = [
-  {
-    icon: BrainCircuit,
-    title: "LLM Integration",
-    desc: "RAG pipelines, agents, and structured outputs wired into real products.",
-  },
-  {
-    icon: Zap,
-    title: "Inference at the Edge",
-    desc: "Low-latency predictions served close to users with smart caching.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Guardrails by Default",
-    desc: "Validation, rate limits, and audit trails on every AI touchpoint.",
-  },
-];
-
 export const EXPERTISE: Array<{
   icon: LucideIcon;
   title: string;
@@ -52,31 +31,31 @@ export const EXPERTISE: Array<{
   span?: string;
 }> = [
   {
-    icon: Database,
-    title: "API & Database Architecture",
-    desc: "Scalable REST & GraphQL with relational and NoSQL stores.",
-    tags: ["PostgreSQL", "MongoDB", "Redis"],
+    icon: Users,
+    title: "Adaptabilitas & Kolaborasi",
+    desc: "Mudah berbaur dengan tim baru, cepat memahami alur kerja, dan menciptakan suasana nyaman saat berkolaborasi. Komunikasi aktif dan empati jadi fondasi kerja tim.",
+    tags: ["Komunikasi", "Tim Kerja", "Empati", "Fast Learner"],
     span: "md:col-span-2",
   },
   {
-    icon: ServerCog,
-    title: "Backend Logic",
-    desc: "Robust, tested server-side systems.",
-    tags: ["Laravel", "Node.js"],
-  },
-  {
-    icon: ShieldCheck,
-    title: "DevOps & CI/CD",
-    desc: "Automated pipelines, zero-downtime deploys.",
-    tags: ["Docker", "GitHub Actions"],
-  },
-  {
     icon: Code2,
-    title: "Frontend Interfaces",
-    desc: "Responsive, accessible, performant UIs.",
-    tags: ["React", "Next.js", "TypeScript"],
+    title: "Pengembangan Web Fullstack",
+    desc: "Membangun antarmuka pengguna hingga logika server. Terbiasa dengan React/Next.js untuk frontend dan PHP/Node.js untuk backend serta database relasional.",
+    tags: ["Next.js", "React", "TypeScript", "PHP", "Node.js", "MySQL"],
+  },
+  {
+    icon: Zap,
+    title: "Otomatisasi & Integrasi API",
+    desc: "Mengotomatiskan alur kerja manual via bot & integrasi layanan cloud. Contoh: bot Telegram terhubung Google Sheets API untuk pencatatan real-time tanpa database terpisah.",
+    tags: ["Telegram Bot API", "Google Sheets API", "Google Cloud", "Webhook"],
+  },
+  {
+    icon: Wifi,
+    title: "Dasar Jaringan & Infrastruktur",
+    desc: "Pengalaman PKL di ISP: memahami IP addressing, VLAN, routing dasar, monitoring bandwidth, dan troubleshooting koneksi pelanggan. Fondasi untuk fullstack yang sadar infrastruktur.",
+    tags: ["IP Networking", "VLAN", "Bandwidth Monitoring", "ISP Operations"],
     span: "md:col-span-2",
   },
 ];
 
-export const AI_BADGE = Sparkles;
+export const AI_BADGE = Bot;

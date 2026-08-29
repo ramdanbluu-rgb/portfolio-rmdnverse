@@ -10,3 +10,4 @@ export const site = {
     { label: "Instagram", href: "https://instagram.com/r_mdnnn11" },
   ],
 };
+

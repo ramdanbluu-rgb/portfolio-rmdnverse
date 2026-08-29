@@ -5,13 +5,14 @@ import { useEffect, useRef, useState } from "react";
 type Line = { type: "cmd" | "ok" | "info" | "out"; text: string };
 
 const SCRIPT: Line[] = [
-  { type: "cmd", text: "npx rmdnverse init" },
-  { type: "ok", text: "✔ runtime booted — node 22 / edge-ready" },
-  { type: "ok", text: "✔ neural mesh connected [8 nodes, 12ms]" },
-  { type: "cmd", text: "rmdnverse deploy --prod --with-ai" },
-  { type: "info", text: "▲ compiling edge functions…" },
-  { type: "info", text: "▲ optimizing inference pipeline…" },
-  { type: "out", text: "● live → https://rmdnverse.my.id  (1.2s)" },
+  { type: "cmd", text: "cd website-desa && npm run dev" },
+  { type: "ok", text: "✔ Next.js 15 started — localhost:3000" },
+  { type: "cmd", text: "node gmq-bot/index.js" },
+  { type: "ok", text: "✔ Telegram webhook registered — GMQ Bot online" },
+  { type: "info", text: "▲ Google Sheets API connected (service account)" },
+  { type: "cmd", text: "php -S localhost:8000 -t aplikasi-pembukuan" },
+  { type: "ok", text: "✔ Pembukuan ISP server ready — MySQL connected" },
+  { type: "out", text: "● 3 project aktif • PKL selesai • Siap kolaborasi" },
 ];
 
 const COLORS: Record<Line["type"], string> = {
@@ -82,7 +83,7 @@ export default function Terminal() {
         <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
         <span className="w-3 h-3 rounded-full bg-[#28c840]" />
         <span className="ml-3 font-mono text-xs text-outline">
-          rmdnverse — zsh
+          portfolio — zsh
         </span>
       </div>
       {/* body */}
